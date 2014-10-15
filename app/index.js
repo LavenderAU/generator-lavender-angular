@@ -10,7 +10,10 @@ var chalk = require('chalk');
 
 var Generator = module.exports = function Generator(args, options) {
   yeoman.generators.Base.apply(this, arguments);
-  this.argument('appname', { type: String, required: false });
+  this.argument('appname', {
+    type: String,
+    required: false
+  });
   this.appname = this.appname || path.basename(process.cwd());
   this.appname = this._.camelize(this._.slugify(this._.humanize(this.appname)));
 
@@ -69,7 +72,7 @@ var Generator = module.exports = function Generator(args, options) {
     args: args
   });
 
-  this.on('end', function () {
+  this.on('end', function() {
     var enabledComponents = [];
 
     if (this.animateModule) {
@@ -158,23 +161,23 @@ Generator.prototype.welcome = function welcome() {
   }
 };
 
-Generator.prototype.askForCompass = function askForCompass() {
+Generator.prototype.askForLess = function askForLess() {
   var cb = this.async();
 
   this.prompt([{
     type: 'confirm',
-    name: 'compass',
-    message: 'Would you like to use Sass (with Compass)?',
+    name: 'less',
+    message: 'Would you like to use Less?',
     default: true
-  }], function (props) {
-    this.compass = props.compass;
+  }], function(props) {
+    this.less = props.less;
 
     cb();
   }.bind(this));
 };
 
 Generator.prototype.askForBootstrap = function askForBootstrap() {
-  var compass = this.compass;
+  var less = this.less;
   var cb = this.async();
 
   this.prompt([{
@@ -184,15 +187,15 @@ Generator.prototype.askForBootstrap = function askForBootstrap() {
     default: true
   }, {
     type: 'confirm',
-    name: 'compassBootstrap',
-    message: 'Would you like to use the Sass version of Bootstrap?',
+    name: 'lessBootstrap',
+    message: 'Would you like to use the Less version of Bootstrap?',
     default: true,
-    when: function (props) {
-      return props.bootstrap && compass;
+    when: function(props) {
+      return props.bootstrap && less;
     }
-  }], function (props) {
+  }], function(props) {
     this.bootstrap = props.bootstrap;
-    this.compassBootstrap = props.compassBootstrap;
+    this.lessBootstrap = props.lessBootstrap;
 
     cb();
   }.bind(this));
@@ -205,8 +208,7 @@ Generator.prototype.askForModules = function askForModules() {
     type: 'checkbox',
     name: 'modules',
     message: 'Which modules would you like to include?',
-    choices: [
-    {
+    choices: [{
       value: 'animateModule',
       name: 'angular-animate.js',
       checked: true
@@ -230,12 +232,13 @@ Generator.prototype.askForModules = function askForModules() {
       value: 'touchModule',
       name: 'angular-touch.js',
       checked: true
-    }
-    ]
+    }]
   }];
 
-  this.prompt(prompts, function (props) {
-    var hasMod = function (mod) { return props.modules.indexOf(mod) !== -1; };
+  this.prompt(prompts, function(props) {
+    var hasMod = function(mod) {
+      return props.modules.indexOf(mod) !== -1;
+    };
     this.animateModule = hasMod('animateModule');
     this.cookiesModule = hasMod('cookiesModule');
     this.resourceModule = hasMod('resourceModule');

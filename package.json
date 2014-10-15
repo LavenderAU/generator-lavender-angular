@@ -1,5 +1,5 @@
 {
-  "name": "generator-angular",
+  "name": "generator-lavender-angular",
   "version": "0.9.8",
   "description": "Yeoman generator for AngularJS",
   "keywords": [
@@ -11,7 +11,7 @@
     "app",
     "angular"
   ],
-  "author": "The Yeoman Team",
+  "author": "LavenderAU",
   "main": "app/index.js",
   "files": [
     "app",
@@ -60,9 +60,7 @@
     "node": ">=0.10.0",
     "npm": ">=1.2.10"
   },
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ]
+  "licenses": [{
+    "type": "BSD"
+  }]
 }
