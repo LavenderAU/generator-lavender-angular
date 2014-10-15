@@ -168,7 +168,7 @@ Generator.prototype.askForAppPath = function askForAppPath() {
     type: 'input',
     name: 'appPath',
     message: 'What do you want to call your source folder?',
-    default: 'app'
+    default: this.appPath || 'app'
   }], function(props) {
     this.appPath = props.appPath;
 
