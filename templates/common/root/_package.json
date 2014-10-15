@@ -24,7 +24,6 @@
     <%
     if (less) { %>
         "grunt-contrib-less": "^0.11.4",
-      "grunt-spritesmith": "~2.20.0",
       <%
     } %>
       "grunt-filerev": "^0.2.1",

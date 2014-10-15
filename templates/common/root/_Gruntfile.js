@@ -62,10 +62,6 @@ module.exports = function(grunt) {
             files: ['<%%= yeoman.app %>/styles/{,*/}*.less'],
             tasks: ['less:server', 'autoprefixer']
         },
-        sprite: {
-          files: ['<%%= yeoman.app %>/images/sprite-src/*.*'],
-          task: ['sprite', 'less']
-        },
         <%
       } else { %>
           styles: {
@@ -201,8 +197,7 @@ module.exports = function(grunt) {
       } <%
       if (less) { %> ,
         less: {
-          src: ['<%%= yeoman.app %>/styles/{,*/}*.less'],
-          ignorePath: /(\.\.\/){1,2}bower_components\//
+          src: ['<%%= yeoman.app %>/styles/{,*/}*.less']
         } <%
       } %>
     },
@@ -267,15 +262,6 @@ module.exports = function(grunt) {
             dest: '.tmp/styles',
             ext: '.css'
           }]
-        }
-      },
-      sprite: {
-        all: {
-          src: ['<%%= yeoman.app %>/images/sprite-src/*.png'],
-          destImg: '<%%= yeoman.app %>/images/spritesheet.png',
-          destCSS: '<%%= yeoman.app %>/styles/spritesheet.less',
-          algorithm: 'binary-tree',
-          padding: 2
         }
       },
       <%
@@ -432,12 +418,12 @@ module.exports = function(grunt) {
           if (bootstrap) { %> , {
               expand: true,
               cwd: '<% if (!lessBootstrap) {
-              %>bower_components/bootstrap/dist<%
+              %><%%= yeoman.app %>/bower_components/bootstrap/dist<%
             } else {
               %>.<%
             } %>',
               src: '<% if (lessBootstrap) {
-              %>bower_components/bootstrap-less/assets/fonts/bootstrap<%
+              %><%%= yeoman.app %>/bower_components/bootstrap-less/assets/fonts/bootstrap<%
             } else { %>fonts<% }
             %>/*',
               dest: '<%%= yeoman.dist %>'
