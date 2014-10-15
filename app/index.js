@@ -113,12 +113,12 @@ var Generator = module.exports = function Generator(args, options) {
         'coffee': this.options.coffee,
         'travis': true,
         'bower-components': enabledComponents,
-        'app-files': 'app/scripts/**/*.' + jsExt,
+        'app-files': this.appPath + '/scripts/**/*.' + jsExt,
         'test-files': [
           'test/mock/**/*.' + jsExt,
           'test/spec/**/*.' + jsExt
         ].join(','),
-        'bower-components-path': 'bower_components'
+        'bower-components-path': this.appPath + 'bower_components'
       }
     });
 
@@ -345,7 +345,7 @@ Generator.prototype._injectDependencies = function _injectDependencies() {
       directory: 'bower_components',
       bowerJson: JSON.parse(fs.readFileSync('./bower.json')),
       ignorePath: new RegExp('^(' + this.appPath + '|..)/'),
-      src: 'app/index.html',
+      src: this.appPath + '/index.html',
       fileTypes: {
         html: {
           replace: {
