@@ -24,9 +24,9 @@ describe('Angular generator', function() {
     'bower.json'
   ];
   var mockPrompts = {
-    compass: true,
+    less: true,
     bootstrap: true,
-    compassBootstrap: true,
+    lessBootstrap: true,
     modules: []
   };
   var genOptions = {

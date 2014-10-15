@@ -31,9 +31,9 @@ describe('Angular generator template mechanism', function() {
       });
 
       helpers.mockPrompt(angular, {
-        compass: true,
+        less: true,
         bootstrap: true,
-        compassBootstrap: true,
+        lessBootstrap: true,
         modules: []
       });
 
