@@ -24,10 +24,11 @@ describe('Angular generator', function() {
     'bower.json'
   ];
   var mockPrompts = {
+    appPath: 'app',
     less: true,
     bootstrap: true,
     lessBootstrap: true,
-    modules: []
+    modules: ['routeModule']
   };
   var genOptions = {
     'appPath': 'app',

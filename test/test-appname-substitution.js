@@ -31,6 +31,7 @@ describe('Angular generator template mechanism', function() {
       });
 
       helpers.mockPrompt(angular, {
+        appPath: 'app',
         less: true,
         bootstrap: true,
         lessBootstrap: true,

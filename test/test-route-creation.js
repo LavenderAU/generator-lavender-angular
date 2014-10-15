@@ -19,6 +19,7 @@ describe('Angular generator route mechanism', function() {
     'skip-message': true
   };
   var mockPrompts = {
+    appPath: 'app',
     less: true,
     bootstrap: true,
     lessBootstrap: true,

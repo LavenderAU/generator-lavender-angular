@@ -25,10 +25,11 @@ describe('Angular generator appPath option', function() {
     'bower.json'
   ];
   var mockPrompts = {
+    appPath: 'app',
     less: true,
     bootstrap: true,
     lessBootstrap: true,
-    modules: []
+    modules: ['routeModule']
   };
   var genOptions = {
     'appPath': appPath,
