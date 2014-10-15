@@ -5,7 +5,7 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular generator', function () {
+describe('Angular generator', function() {
   var angular;
   var expected = [
     'app/.htaccess',
@@ -36,14 +36,13 @@ describe('Angular generator', function () {
     'skip-message': true
   };
 
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
+  beforeEach(function(done) {
+    helpers.testDirectory(path.join(__dirname, 'tmp'), function(err) {
       if (err) {
         done(err);
       }
       angular = helpers.createGenerator(
-        'angular:app',
-        [
+        'lavender-ng:app', [
           '../../app',
           '../../common',
           '../../controller',
@@ -61,15 +60,15 @@ describe('Angular generator', function () {
     });
   });
 
-  describe('App files', function () {
-    it('should generate dotfiles', function (done) {
-      angular.run({}, function () {
+  describe('App files', function() {
+    it('should generate dotfiles', function(done) {
+      angular.run({}, function() {
         helpers.assertFile(expected);
         done();
       });
     });
 
-    it('creates expected JS files', function (done) {
+    it('creates expected JS files', function(done) {
       angular.run({}, function() {
         helpers.assertFile([].concat(expected, [
           'app/scripts/app.js',
@@ -80,9 +79,9 @@ describe('Angular generator', function () {
       });
     });
 
-    it('creates CoffeeScript files', function (done) {
+    it('creates CoffeeScript files', function(done) {
       angular.env.options.coffee = true;
-      angular.run([], function () {
+      angular.run([], function() {
         helpers.assertFile([].concat(expected, [
           'app/scripts/app.coffee',
           'app/scripts/controllers/main.coffee',
@@ -93,14 +92,14 @@ describe('Angular generator', function () {
     });
   });
 
-  describe('Service Subgenerators', function () {
-    var generatorTest = function (generatorType, specType, targetDirectory, scriptNameFn, specNameFn, suffix, done) {
+  describe('Service Subgenerators', function() {
+    var generatorTest = function(generatorType, specType, targetDirectory, scriptNameFn, specNameFn, suffix, done) {
       var name = 'foo';
       var deps = [path.join('../..', generatorType)];
-      var genTester = helpers.createGenerator('angular:' + generatorType, deps, [name], genOptions);
+      var genTester = helpers.createGenerator('lavender-ng:' + generatorType, deps, [name], genOptions);
 
-      angular.run([], function () {
-        genTester.run([], function () {
+      angular.run([], function() {
+        genTester.run([], function() {
           helpers.assertFileContent([
             [
               path.join('app/scripts', targetDirectory, name + '.js'),
@@ -122,49 +121,49 @@ describe('Angular generator', function () {
       });
     };
 
-    it('should generate a new controller', function (done) {
+    it('should generate a new controller', function(done) {
       generatorTest('controller', 'controller', 'controllers', _.classify, _.classify, 'Ctrl', done);
     });
 
-    it('should generate a new directive', function (done) {
+    it('should generate a new directive', function(done) {
       generatorTest('directive', 'directive', 'directives', _.camelize, _.camelize, '', done);
     });
 
-    it('should generate a new filter', function (done) {
+    it('should generate a new filter', function(done) {
       generatorTest('filter', 'filter', 'filters', _.camelize, _.camelize, '', done);
     });
 
     ['constant', 'factory', 'provider', 'value'].forEach(function(t) {
-      it('should generate a new ' + t, function (done) {
+      it('should generate a new ' + t, function(done) {
         generatorTest(t, 'service', 'services', _.camelize, _.camelize, '', done);
       });
     });
 
-    it('should generate a new service', function (done) {
+    it('should generate a new service', function(done) {
       generatorTest('service', 'service', 'services', _.capitalize, _.capitalize, '', done);
     });
   });
 
-  describe('View', function () {
-    it('should generate a new view', function (done) {
+  describe('View', function() {
+    it('should generate a new view', function(done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular:view', deps, ['foo'], genOptions);
+      angularView = helpers.createGenerator('lavender-ng:view', deps, ['foo'], genOptions);
 
       helpers.mockPrompt(angularView, mockPrompts);
-      angularView.run([], function () {
+      angularView.run([], function() {
         helpers.assertFile(['app/views/foo.html']);
         done();
       });
     });
 
-    it('should generate a new view in subdirectories', function (done) {
+    it('should generate a new view in subdirectories', function(done) {
       var angularView;
       var deps = ['../../view'];
-      angularView = helpers.createGenerator('angular:view', deps, ['foo/bar'], genOptions);
+      angularView = helpers.createGenerator('lavender-ng:view', deps, ['foo/bar'], genOptions);
 
       helpers.mockPrompt(angularView, mockPrompts);
-      angularView.run([], function () {
+      angularView.run([], function() {
         helpers.assertFile(['app/views/foo/bar.html']);
         done();
       });

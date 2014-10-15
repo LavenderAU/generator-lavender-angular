@@ -4,7 +4,7 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-describe('Angular generator route mechanism', function () {
+describe('Angular generator route mechanism', function() {
   var angular;
   var route = 'simpleroute';
   var expected = [
@@ -25,14 +25,13 @@ describe('Angular generator route mechanism', function () {
     modules: ['routeModule']
   };
 
-  beforeEach(function (done) {
-    helpers.testDirectory(path.join(__dirname, 'tmp'), function (err) {
+  beforeEach(function(done) {
+    helpers.testDirectory(path.join(__dirname, 'tmp'), function(err) {
       if (err) {
         done(err);
       }
       angular = helpers.createGenerator(
-        'angular:app',
-        [
+        'lavender-ng:app', [
           '../../app',
           '../../common',
           '../../controller',
@@ -47,15 +46,13 @@ describe('Angular generator route mechanism', function () {
         genOptions
       );
       helpers.mockPrompt(angular, mockPrompts);
-      angular.run({}, function () {
+      angular.run({}, function() {
         angular = helpers.createGenerator(
-          'angular:route',
-          [
+          'lavender-ng:route', [
             '../../controller',
             '../../route',
             '../../view'
-          ],
-          [route],
+          ], [route],
           genOptions
         );
         helpers.mockPrompt(angular, mockPrompts);
@@ -64,8 +61,8 @@ describe('Angular generator route mechanism', function () {
     });
   });
 
-  describe('create routes', function () {
-    it('should generate default route items', function(done){
+  describe('create routes', function() {
+    it('should generate default route items', function(done) {
       angular.run({}, function(e) {
         helpers.assertFile(expected);
         helpers.assertFileContent(
@@ -78,7 +75,7 @@ describe('Angular generator route mechanism', function () {
     });
 
     // Test with URI specified explicitly
-    it('should generate route items with the route uri given', function(done){
+    it('should generate route items with the route uri given', function(done) {
       var uri = 'segment1/segment2/:parameter';
 
       angular.options.uri = uri;
