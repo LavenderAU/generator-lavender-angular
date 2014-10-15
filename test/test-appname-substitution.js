@@ -4,11 +4,11 @@
 var path = require('path');
 var helpers = require('yeoman-generator').test;
 
-describe('Angular generator template mechanism', function () {
+describe('Angular generator template mechanism', function() {
   var angular;
   var appName = 'upperCaseBug';
 
-  beforeEach(function (done) {
+  beforeEach(function(done) {
     var deps = [
       '../../../app',
       '../../../common',
@@ -18,12 +18,12 @@ describe('Angular generator template mechanism', function () {
         'karma:app'
       ]
     ];
-    helpers.testDirectory(path.join(__dirname, 'tmp', appName), function (err) {
+    helpers.testDirectory(path.join(__dirname, 'tmp', appName), function(err) {
       if (err) {
         done(err);
       }
 
-      angular = helpers.createGenerator('angular:app', deps, [appName], {
+      angular = helpers.createGenerator('lavender-ng:app', deps, [appName], {
         'appPath': 'app',
         'skip-welcome-message': true,
         'skip-install': true,
@@ -41,8 +41,8 @@ describe('Angular generator template mechanism', function () {
     });
   });
 
-  it('should generate the same appName in every file', function (done) {
-    angular.run({}, function () {
+  it('should generate the same appName in every file', function(done) {
+    angular.run({}, function() {
       helpers.assertFile([
         'app/scripts/app.js',
         'app/scripts/controllers/main.js',
