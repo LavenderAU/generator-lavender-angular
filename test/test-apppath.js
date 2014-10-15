@@ -32,6 +32,7 @@ describe('Angular generator source folder mockPrompt', function() {
     modules: ['routeModule']
   };
   var genOptions = {
+    'appPath': appPath,
     'skip-install': true,
     'skip-welcome-message': true,
     'skip-message': true
