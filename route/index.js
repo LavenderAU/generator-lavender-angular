@@ -23,17 +23,17 @@ var Generator = module.exports = function Generator() {
     this.foundWhenForRoute = true;
   }
 
-  this.hookFor('angular:controller');
-  this.hookFor('angular:view');
+  this.hookFor('lavender-ng:controller');
+  this.hookFor('lavender-ng:view');
 };
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.rewriteAppJs = function () {
+Generator.prototype.rewriteAppJs = function() {
   var coffee = this.env.options.coffee;
 
   if (!this.foundWhenForRoute) {
-    this.on('end', function () {
+    this.on('end', function() {
       this.log(chalk.yellow(
         '\nangular-route is not installed. Skipping adding the route to ' +
         'scripts/app.' + (coffee ? 'coffee' : 'js')
@@ -54,15 +54,14 @@ Generator.prototype.rewriteAppJs = function () {
     ),
     needle: '.otherwise',
     splicable: [
-      "  templateUrl: 'views/" + this.name.toLowerCase() + ".html'" + (coffee ? "" : "," ),
+      "  templateUrl: 'views/" + this.name.toLowerCase() + ".html'" + (coffee ? "" : ","),
       "  controller: '" + this.classedName + "Ctrl'"
     ]
   };
 
   if (coffee) {
     config.splicable.unshift(".when '/" + this.uri + "',");
-  }
-  else {
+  } else {
     config.splicable.unshift(".when('/" + this.uri + "', {");
     config.splicable.push("})");
   }
