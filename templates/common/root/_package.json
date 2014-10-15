@@ -11,11 +11,6 @@
     if (coffee) { %>
         "grunt-contrib-coffee": "^0.10.1",
       <%
-    } %> <%
-    if (less) { %>
-        "grunt-contrib-less": "^0.11.4",
-      "grunt-spritesmith": "~2.20",
-      <%
     } %>
       "grunt-contrib-concat": "^0.4.0",
     "grunt-contrib-connect": "^0.7.1",
@@ -26,7 +21,13 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-filerev": "^0.2.1",
+    <%
+    if (less) { %>
+        "grunt-contrib-less": "^0.11.4",
+      "grunt-spritesmith": "~2.20.0",
+      <%
+    } %>
+      "grunt-filerev": "^0.2.1",
     "grunt-google-cdn": "^0.4.0",
     "grunt-newer": "^0.7.0",
     "grunt-ng-annotate": "^0.4.0",

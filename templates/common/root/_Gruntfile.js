@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: require('./bower.json').appPath || 'app',
+    app: require('./bower.json').appPath || appPath,
     dist: 'dist'
   };
 
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
             tasks: ['less:server', 'autoprefixer']
         },
         sprite: {
-          files: ['<%%= config.app %>/images/sprite-src/*.*'],
+          files: ['<%%= yeoman.app %>/images/sprite-src/*.*'],
           task: ['sprite', 'less']
         },
         <%
@@ -199,9 +199,9 @@ module.exports = function(grunt) {
         src: ['<%%= yeoman.app %>/index.html'],
         ignorePath: /\.\.\//
       } <%
-      if (compass) { %> ,
-        sass: {
-          src: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+      if (less) { %> ,
+        less: {
+          src: ['<%%= yeoman.app %>/styles/{,*/}*.less'],
           ignorePath: /(\.\.\/){1,2}bower_components\//
         } <%
       } %>
@@ -236,7 +236,7 @@ module.exports = function(grunt) {
       },
       <%
     } %> <%
-    if (compass) { %>
+    if (less) { %>
 
       // Compiles Less to CSS and generates necessary files if requested
       less: {
@@ -245,7 +245,7 @@ module.exports = function(grunt) {
           strictImports: true,
           syncImports: true,
           sourceMap: true,
-          sourceMapFilename: '<%%= config.app %>/styles/main.css.map',
+          sourceMapFilename: '<%%= yeoman.app %>/styles/main.css.map',
           sourceMapURL: '/styles/main.css.map',
           sourceMapRootpath: '/',
           report: 'min'
@@ -253,7 +253,7 @@ module.exports = function(grunt) {
         server: {
           files: [{
             expand: true,
-            cwd: '<%%= config.app %>/styles',
+            cwd: '<%%= yeoman.app %>/styles',
             src: ['*.less'],
             dest: '.tmp/styles',
             ext: '.css'
@@ -262,7 +262,7 @@ module.exports = function(grunt) {
         dist: {
           files: [{
             expand: true,
-            cwd: '<%%= config.app %>/styles',
+            cwd: '<%%= yeoman.app %>/styles',
             src: ['*.less'],
             dest: '.tmp/styles',
             ext: '.css'
@@ -271,9 +271,9 @@ module.exports = function(grunt) {
       },
       sprite: {
         all: {
-          src: ['<%%= config.app %>/images/sprite-src/*.png'],
-          destImg: '<%%= config.app %>/images/spritesheet.png',
-          destCSS: '<%%= config.app %>/styles/spritesheet.less',
+          src: ['<%%= yeoman.app %>/images/sprite-src/*.png'],
+          destImg: '<%%= yeoman.app %>/images/spritesheet.png',
+          destCSS: '<%%= yeoman.app %>/styles/spritesheet.less',
           algorithm: 'binary-tree',
           padding: 2
         }

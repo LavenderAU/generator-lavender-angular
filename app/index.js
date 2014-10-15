@@ -60,15 +60,15 @@ var Generator = module.exports = function Generator(args, options) {
     this.env.options.coffee = this.options.coffee;
   }
 
-  this.hookFor('angular:common', {
+  this.hookFor('lavender-ng:common', {
     args: args
   });
 
-  this.hookFor('angular:main', {
+  this.hookFor('lavender-ng:main', {
     args: args
   });
 
-  this.hookFor('angular:controller', {
+  this.hookFor('lavender-ng:controller', {
     args: args
   });
 
@@ -159,6 +159,21 @@ Generator.prototype.welcome = function welcome() {
       '\n'
     );
   }
+};
+
+Generator.prototype.askForAppPath = function askForAppPath() {
+  var cb = this.async();
+
+  this.prompt([{
+    type: 'input',
+    name: 'appPath',
+    message: 'What do you want to call your source folder?',
+    default: 'app'
+  }], function(props) {
+    this.appPath = props.appPath;
+
+    cb();
+  }.bind(this));
 };
 
 Generator.prototype.askForLess = function askForLess() {
@@ -287,7 +302,7 @@ Generator.prototype.readIndex = function readIndex() {
 };
 
 Generator.prototype.bootstrapFiles = function bootstrapFiles() {
-  var cssFile = 'styles/main.' + (this.compass ? 's' : '') + 'css';
+  var cssFile = 'styles/main.' + (this.less ? 'less' : 'css');
   this.copy(
     path.join('app', cssFile),
     path.join(this.appPath, cssFile)
