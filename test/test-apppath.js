@@ -5,7 +5,7 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('Angular generator appPath option', function() {
+describe('Angular generator source folder mockPrompt', function() {
   var angular;
   var appPath = 'customAppPath';
   var expected = [
@@ -25,14 +25,13 @@ describe('Angular generator appPath option', function() {
     'bower.json'
   ];
   var mockPrompts = {
-    appPath: 'app',
+    appPath: appPath,
     less: true,
     bootstrap: true,
     lessBootstrap: true,
     modules: ['routeModule']
   };
   var genOptions = {
-    'appPath': appPath,
     'skip-install': true,
     'skip-welcome-message': true,
     'skip-message': true
