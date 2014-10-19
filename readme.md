@@ -1,14 +1,14 @@
-# AngularJS generator [![Build Status](https://secure.travis-ci.org/yeoman/generator-angular.svg?branch=master)](http://travis-ci.org/yeoman/generator-angular)
+# Lavender AngularJS generator [![Build Status](https://secure.travis-ci.org/LavenderAU/generator-lavender-ng.svg?branch=master)](http://travis-ci.org/LavenderAU/generator-lavender-ng)
 
 > Yeoman generator for AngularJS - lets you quickly set up a project with sensible defaults and best practices.
 
-[Roadmap for upcoming plans/features/fixes](https://github.com/yeoman/generator-angular/issues/553)
+[Roadmap for upcoming plans/features/fixes](https://github.com/LavenderAU/generator-lavender-ng/issues/553)
 
 ## Usage
 
-Install `generator-angular`:
+Install `generator-lavender-ng`:
 ```
-npm install -g generator-angular
+npm install -g git://github.com/LavenderAU/generator-lavender-ng
 ```
 
 Make a new directory, and `cd` into it:
@@ -28,18 +28,18 @@ Run `grunt` for building and `grunt serve` for preview
 
 Available generators:
 
-* [angular](#app) (aka [angular:app](#app))
-* [angular:controller](#controller)
-* [angular:directive](#directive)
-* [angular:filter](#filter)
-* [angular:route](#route)
-* [angular:service](#service)
-* [angular:provider](#service)
-* [angular:factory](#service)
-* [angular:value](#service)
-* [angular:constant](#service)
-* [angular:decorator](#decorator)
-* [angular:view](#view)
+* [lavender-ng](#app) (aka [lavender-ng:app](#app))
+* [lavender-ng:controller](#controller)
+* [lavender-ng:directive](#directive)
+* [lavender-ng:filter](#filter)
+* [lavender-ng:route](#route)
+* [lavender-ng:service](#service)
+* [lavender-ng:provider](#service)
+* [lavender-ng:factory](#service)
+* [lavender-ng:value](#service)
+* [lavender-ng:constant](#service)
+* [lavender-ng:decorator](#decorator)
+* [lavender-ng:view](#view)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -48,7 +48,7 @@ Sets up a new AngularJS app, generating all the boilerplate you need to get star
 
 Example:
 ```bash
-yo angular
+yo lavender-ng
 ```
 
 ### Route
@@ -56,7 +56,7 @@ Generates a controller and view, and configures a route in `app/scripts/app.js` 
 
 Example:
 ```bash
-yo angular:route myroute
+yo lavender-ng:route myroute
 ```
 
 Produces `app/scripts/controllers/myroute.js`:
@@ -75,7 +75,7 @@ Produces `app/views/myroute.html`:
 
 Example:
 ```bash
-yo angular:route myRoute --uri=my/route
+yo lavender-ng:route myRoute --uri=my/route
 ```
 
 Produces controller and view as above and adds a route to `app/scripts/app.js`
@@ -86,7 +86,7 @@ Generates a controller in `app/scripts/controllers`.
 
 Example:
 ```bash
-yo angular:controller user
+yo lavender-ng:controller user
 ```
 
 Produces `app/scripts/controllers/user.js`:
@@ -100,7 +100,7 @@ Generates a directive in `app/scripts/directives`.
 
 Example:
 ```bash
-yo angular:directive myDirective
+yo lavender-ng:directive myDirective
 ```
 
 Produces `app/scripts/directives/myDirective.js`:
@@ -121,7 +121,7 @@ Generates a filter in `app/scripts/filters`.
 
 Example:
 ```bash
-yo angular:filter myFilter
+yo lavender-ng:filter myFilter
 ```
 
 Produces `app/scripts/filters/myFilter.js`:
@@ -138,7 +138,7 @@ Generates an HTML view file in `app/views`.
 
 Example:
 ```bash
-yo angular:view user
+yo lavender-ng:view user
 ```
 
 Produces `app/views/user.html`:
@@ -151,7 +151,7 @@ Generates an AngularJS service.
 
 Example:
 ```bash
-yo angular:service myService
+yo lavender-ng:service myService
 ```
 
 Produces `app/scripts/services/myService.js`:
@@ -161,14 +161,14 @@ angular.module('myMod').service('myService', function () {
 });
 ```
 
-You can also do `yo angular:factory`, `yo angular:provider`, `yo angular:value`, and `yo angular:constant` for other types of services.
+You can also do `yo lavender-ng:factory`, `yo lavender-ng:provider`, `yo lavender-ng:value`, and `yo lavender-ng:constant` for other types of services.
 
 ### Decorator
 Generates an AngularJS service decorator.
 
 Example:
 ```bash
-yo angular:decorator serviceName
+yo lavender-ng:decorator serviceName
 ```
 
 Produces `app/scripts/decorators/serviceNameDecorator.js`:
@@ -189,7 +189,7 @@ For generators that output scripts, the `--coffee` option will output CoffeeScri
 
 For example:
 ```bash
-yo angular:controller user --coffee
+yo lavender-ng:controller user --coffee
 ```
 
 Produces `app/scripts/controller/user.coffee`:

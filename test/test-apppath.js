@@ -49,6 +49,7 @@ describe('Angular generator source folder mockPrompt', function() {
           '../../app',
           '../../common',
           '../../controller',
+          '../../route',
           '../../main', [
             helpers.createDummyGenerator(),
             'karma:app'
@@ -58,18 +59,7 @@ describe('Angular generator source folder mockPrompt', function() {
         genOptions
       );
       helpers.mockPrompt(angular, mockPrompts);
-      angular.run({}, function() {
-        angular = helpers.createGenerator(
-          'lavender-ng:route', [
-            '../../controller',
-            '../../route',
-            '../../view'
-          ], [route],
-          genOptions
-        );
-        helpers.mockPrompt(angular, mockPrompts);
-        done();
-      });
+      done();
     });
   });
 
