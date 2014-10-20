@@ -49,8 +49,9 @@ describe('Angular generator source folder mockPrompt', function() {
           '../../app',
           '../../common',
           '../../controller',
+          '../../main',
           '../../route',
-          '../../main', [
+          '../../view', [
             helpers.createDummyGenerator(),
             'karma:app'
           ]
