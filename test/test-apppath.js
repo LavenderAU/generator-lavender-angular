@@ -8,6 +8,7 @@ var _ = require('underscore.string');
 describe('Angular generator source folder mockPrompt', function() {
   var angular;
   var appPath = 'customAppPath';
+  var route = 'simpleroute';
   var expected = [
     appPath + '/.htaccess',
     appPath + '/404.html',
