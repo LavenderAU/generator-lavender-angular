@@ -73,6 +73,7 @@ describe('Angular generator source folder mockPrompt', function() {
         helpers.mockPrompt(angular, mockPrompts);
         done();
       });
+      done();
     });
   });
 
