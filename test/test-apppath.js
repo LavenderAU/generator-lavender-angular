@@ -60,7 +60,18 @@ describe('Angular generator source folder mockPrompt', function() {
         genOptions
       );
       helpers.mockPrompt(angular, mockPrompts);
-      done();
+      angular.run({}, function() {
+        angular = helpers.createGenerator(
+          'lavender-ng:route', [
+            '../../controller',
+            '../../route',
+            '../../view'
+          ], [route],
+          genOptions
+        );
+        helpers.mockPrompt(angular, mockPrompts);
+        done();
+      });
     });
   });
 
