@@ -12,7 +12,7 @@ describe('Angular generator', function() {
     'app/404.html',
     'app/favicon.ico',
     'app/robots.txt',
-    'app/styles/main.scss',
+    'app/styles/main.less',
     'app/views/main.html',
     'app/index.html',
     '.bowerrc',
