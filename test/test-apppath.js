@@ -13,7 +13,7 @@ describe('Angular generator source folder mockPrompt', function() {
     appPath + '/404.html',
     appPath + '/favicon.ico',
     appPath + '/robots.txt',
-    appPath + '/styles/main.scss',
+    appPath + '/styles/main.less',
     appPath + '/views/main.html',
     appPath + '/index.html',
     '.bowerrc',
